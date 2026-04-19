@@ -8,9 +8,11 @@ This document guides AI coding agents in processing and implementing feature req
 2. **Validate** - Check completeness and feasibility
 3. **Clarify** - Ask questions if needed
 4. **Plan** - Create technical implementation plan
-5. **Implement** - Build the feature
-6. **Verify** - Test and validate
-7. **Document** - Update Postman collection if API changed
+5. **Implement Backend** - Invoke `backend-engineer` for API/Prisma/services
+6. **Implement Frontend** - Invoke `frontend-developer` for UI/components
+7. **Test** - Invoke `qa-engineer` for testing
+8. **Document** - Invoke `documenter` for docs
+9. **Verify** - User acceptance testing
 
 ## Feature Request Types
 
@@ -53,19 +55,34 @@ If incomplete, ask clarifying questions.
 Use template from `.opencode/templates/feature-request-template.md`
 
 ### Step 4: Implementation
-Following SDLC guidance:
-1. Create branch
-2. Update schema (if needed)
-3. Implement API
-4. Implement UI
-5. Add tests
-6. Update Postman collection
+Invoke subagents in sequence:
+
+1. **Backend** - Invoke `backend-engineer`:
+   - Update schema (if needed)
+   - Implement API endpoints
+   - Implement service layer
+   - Add RBAC checks
+
+2. **Frontend** - Invoke `frontend-developer`:
+   - Implement UI components
+   - Implement pages
+   - Add permission guards
+
+3. **Testing** - Invoke `qa-engineer`:
+   - Add unit tests
+   - Add integration tests
+
+4. **Documentation** - Invoke `documenter`:
+   - Update API documentation
+   - Update Postman collection
 
 ### Step 5: Verification
-- [ ] All acceptance criteria met
-- [ ] Tests passing
-- [ ] Code reviewed
-- [ ] Documentation updated
+After subagent implementation completes:
+1. Verify acceptance criteria met
+2. Verify tests passing
+3. Run linting and type checking
+4. Verify documentation updated
+5. Coordinate user acceptance testing via consultant
 
 ## Common Feature Patterns
 
