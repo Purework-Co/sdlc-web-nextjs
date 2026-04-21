@@ -40,6 +40,30 @@ You are the **Frontend Engineer** agent - focused on frontend development.
 - Hide unauthorized UI elements
 - Show role-based menus
 
+## Landing Page Development
+
+When creating landing pages, follow `.opencode/docs/13-landing-page-standardization.md`:
+
+- Use **Framer Motion** for all animations
+- Apply **industry-adaptive styling** based on use case
+- Implement **section transitions** on scroll (fadeInUp, 0.6s duration)
+- Add **hover animations** on cards (scale 1.02, glow effect)
+- Ensure **responsive behavior** with reduced animations on mobile
+- Respect **prefers-reduced-motion** for accessibility
+
+### SEO Requirements
+- Complete metadata (title, description, Open Graph, Twitter Cards)
+- Semantic HTML structure with proper heading hierarchy
+- Image optimization with alt text and priority loading
+- JSON-LD structured data (Organization, Product, FAQ schemas)
+- Core Web Vitals optimization (LCP < 2.5s, CLS < 0.1)
+
+### Google EEAT Principles
+- **Experience**: Real testimonials, authentic case studies
+- **Expertise**: Author bylines with credentials
+- **Authoritativeness**: Client logos, metrics, awards
+- **Trustworthiness**: Contact info, SSL, privacy policy, real reviews
+
 ## Commands
 
 - `/init-project` - Initialize new Next.js project with frontend setup
