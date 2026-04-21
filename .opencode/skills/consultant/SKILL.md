@@ -90,10 +90,26 @@ FOLLOW docs/03-feature-request.md Step 5:
 
 CRITICAL: Invoke `qa-engineer` FIRST to create tests BEFORE invoking backend-engineer or frontend-developer.
 
-REQUIRED ORDER:
-1. Invoke `qa-engineer` - Create Jest unit/integration tests + Playwright E2E stubs
-2. Invoke `backend-engineer` - Implement backend (tests MUST pass before frontend)
-3. Invoke `frontend-developer` - Implement frontend
+REQUIRED ORDER (with Git MANDATORY):
+1. **Verify feature branch exists** - Check `git branch` shows `feature/TICKET-*`
+   - If no branch: `git checkout develop && git checkout -b feature/TICKET-description`
+2. Invoke `qa-engineer` - Create Jest unit/integration tests + Playwright E2E stubs
+3. Invoke `backend-engineer` - Implement backend (tests MUST pass before frontend)
+4. Invoke `frontend-developer` - Implement frontend
+
+### Git Enforcement (MANDATORY)
+
+- **Before ANY implementation**: Verify feature branch exists
+- **Branch from `develop`** (NOT main)
+- **All commits MUST include ticket reference**
+- **After work complete**:
+  ```bash
+  git add . && git commit -m "feat(TICKET): description"
+  git push origin feature/TICKET-description
+  git checkout develop && git merge feature/TICKET-description
+  git push origin develop
+  git branch -d feature/TICKET-description
+  ```
 
 ### /liaison
 Act as liaison during development for clarification.

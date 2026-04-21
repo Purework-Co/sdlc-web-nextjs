@@ -46,15 +46,24 @@ prisma/
 └── migrations/             # Database migrations
 ```
 
-## Branch Strategy
+## Branch Strategy (MANDATORY)
 
 ```
-main (production)
-├── develop (staging)
+main (production - NEVER work directly on main)
+├── develop (staging - NEVER commit directly to develop)
 │   ├── feature/TICKET-xxx-description
 │   ├── fix/TICKET-xxx-description
+│   ├── refactor/TICKET-xxx-description
 │   └── chore/TICKET-xxx-description
 ```
+
+### MANDATORY Rules
+
+1. **AI MUST create a feature branch for EVERY task**
+2. **Branch from `develop` (NOT main)**
+3. **NEVER commit directly to `develop` or `main`**
+4. **ALL commits MUST include ticket reference**
+5. **Merge with git merge (NOT squash) after verification**
 
 ### Branch Naming
 - `feature/` - New features
@@ -62,7 +71,7 @@ main (production)
 - `refactor/` - Code refactoring
 - `chore/` - Maintenance tasks
 
-### Commit Message Format
+### Commit Message Format (MANDATORY)
 
 ```
 type(TICKET-xxx): description
@@ -72,7 +81,9 @@ type(TICKET-xxx): description
 [optional footer]
 ```
 
-Types: `feat`, `fix`, `refactor`, `chore`, `docs`, `test`
+**Types**: `feat`, `fix`, `refactor`, `chore`, `docs`, `test`
+
+**RULE**: ALL commits MUST include ticket reference in this format: `type(TICKET): description`
 
 Example:
 ```
@@ -127,13 +138,26 @@ npx prisma db push
 npm run dev
 ```
 
-### 2. Creating New Feature
-1. Create branch from `develop`
-2. Update Prisma schema if needed
-3. Create REST API in `src/app/api/v1/`
-4. Create frontend components
-5. Add tests
-6. Update Postman collection
+### 2. Creating New Feature (MANDATORY Git Workflow)
+
+```
+1. git checkout develop && git pull
+2. git checkout -b feature/PRD-123-description
+3. Update Prisma schema if needed
+4. Create REST API in src/app/api/v1/
+5. Create frontend components
+6. Add tests
+7. Update Postman collection
+8. git add . && git commit -m "feat(PRD-123): description"
+9. git push origin feature/PRD-123-description
+10. Run verification (lint, typecheck, tests)
+11. git checkout develop && git merge feature/PRD-123-description
+12. git push origin develop
+13. git branch -d feature/PRD-123-description
+14. git push origin --delete feature/PRD-123-description
+```
+
+**CRITICAL**: Steps 1-2 MUST happen before ANY code changes. Step 9 MUST happen before push. Steps 11-14 after verification passes.
 
 ### 3. Database Changes
 ```bash
