@@ -8,9 +8,9 @@ This document guides AI coding agents in processing and implementing feature req
 2. **Validate** - Check completeness and feasibility
 3. **Clarify** - Ask questions if needed
 4. **Plan** - Create technical implementation plan
-5. **Implement Backend** - Invoke `backend-engineer` for API/Prisma/services
-6. **Implement Frontend** - Invoke `frontend-developer` for UI/components
-7. **Test** - Invoke `qa-engineer` for testing
+5. **Create Tests** - Invoke `qa-engineer` for Jest unit/integration + Playwright E2E stubs
+6. **Implement Backend** - Invoke `backend-engineer` for API/Prisma/services (MUST pass tests)
+7. **Implement Frontend** - Invoke `frontend-developer` for UI/components
 8. **Document** - Invoke `documenter` for docs
 9. **Verify** - User acceptance testing
 
@@ -57,20 +57,23 @@ Use template from `.opencode/templates/feature-request-template.md`
 ### Step 4: Implementation
 Invoke subagents in sequence:
 
-1. **Backend** - Invoke `backend-engineer`:
+1. **Tests (QA)** - Invoke `qa-engineer` FIRST:
+   - Create Jest unit tests for service functions
+   - Create Jest integration tests for API endpoints
+   - Create Playwright E2E test stubs (with TODO comments for UI-dependent flows)
+   - Tests MUST be created BEFORE backend implementation starts
+
+2. **Backend** - Invoke `backend-engineer`:
    - Update schema (if needed)
    - Implement API endpoints
    - Implement service layer
    - Add RBAC checks
+   - Tests MUST pass before frontend can start
 
-2. **Frontend** - Invoke `frontend-developer`:
+3. **Frontend** - Invoke `frontend-developer`:
    - Implement UI components
    - Implement pages
    - Add permission guards
-
-3. **Testing** - Invoke `qa-engineer`:
-   - Add unit tests
-   - Add integration tests
 
 4. **Documentation** - Invoke `documenter`:
    - Update API documentation

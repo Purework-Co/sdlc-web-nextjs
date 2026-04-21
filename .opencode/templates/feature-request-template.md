@@ -113,3 +113,42 @@
 |------|------|------|----------|
 | Product Owner | | | Approved / Rejected |
 | Engineering | | | Approved / Rejected |
+
+---
+
+## 11. Test Specifications
+
+### Unit Tests (Jest)
+Required for all service functions, utilities, and API handlers (mocked).
+
+| ID | Test Case | Expected Outcome |
+|----|-----------|-------------------|
+| UT-01 | [Description] | [Expected result] |
+| UT-02 | [Description] | [Expected result] |
+| UT-03 | [Description] | [Expected result] |
+
+### Integration Tests (Jest)
+Required for API endpoints with test database, service layer, and auth flows.
+
+| ID | Test Case | Expected Outcome |
+|----|-----------|-------------------|
+| IT-01 | [Description] | [Expected result] |
+| IT-02 | [Description] | [Expected result] |
+
+### E2E Stubs (Playwright)
+Create stubs with TODO comments for UI-dependent flows. Complete after frontend implementation.
+
+| ID | Test Case | Expected Outcome |
+|----|-----------|-------------------|
+| E2E-01 | [Description] | [Expected result] |
+| E2E-02 | [Description] | [Expected result] |
+
+---
+
+## 12. Test Completion Checklist
+
+- [ ] All Unit Tests (UT-*) created and passing
+- [ ] All Integration Tests (IT-*) created and passing
+- [ ] All E2E Stubs (E2E-*) created with TODO comments
+- [ ] Tests reviewed by QA engineer
+- [ ] Test coverage >80% for new code

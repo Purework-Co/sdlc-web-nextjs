@@ -72,7 +72,7 @@ Convert user language to technical specs for team.
 
 Translate user requirements to technical specifications for the development team.
 
-FOLLOW docs/03-feature-request.md Step 6:
+FOLLOW docs/03-feature-request.md Step 5:
 1. Use business language from validated feature request
 2. Map to technical requirements:
    - Database changes needed?
@@ -84,13 +84,16 @@ FOLLOW docs/03-feature-request.md Step 6:
 4. Create technical notes for development team
 5. Identify potential implementation challenges
 6. Prepare handoff package:
-   - Complete feature request
+   - Complete feature request (with Test Specifications in Section 11)
    - Technical assessment
    - Dependencies list
 
-This prepares the package for implementation. Invoke subagents:
-- backend-engineer for API, Prisma, services, auth
-- frontend-developer for UI, pages, components
+CRITICAL: Invoke `qa-engineer` FIRST to create tests BEFORE invoking backend-engineer or frontend-developer.
+
+REQUIRED ORDER:
+1. Invoke `qa-engineer` - Create Jest unit/integration tests + Playwright E2E stubs
+2. Invoke `backend-engineer` - Implement backend (tests MUST pass before frontend)
+3. Invoke `frontend-developer` - Implement frontend
 
 ### /liaison
 Act as liaison during development for clarification.
