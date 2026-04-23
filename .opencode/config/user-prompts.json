@@ -1,0 +1,66 @@
+{
+  "consultant_workflow": {
+    "step_1_clarify": {
+      "title": "1. Let's Understand Your Request",
+      "format": "structured_questions",
+      "description": "I'll ask clarifying questions to understand exactly what you need",
+      "questions": [
+        "What are you trying to accomplish? (e.g., 'Add user login', 'Create a report page')",
+        "Who will use this feature? (e.g., 'Admin users', 'All customers')",
+        "What's the expected outcome? (e.g., 'Users can log in with email', 'Show sales data in a table')",
+        "Any specific constraints or requirements? (e.g., 'Must be mobile-friendly', 'Should save to database')"
+      ]
+    },
+    "step_2_document": {
+      "title": "2. Creating Specification",
+      "format": "summary",
+      "description": "Based on your answers, I'll create a clear technical specification"
+    },
+    "step_3_validate": {
+      "title": "3. Confirming Details",
+      "format": "checklist",
+      "description": "Let me confirm these details are correct before we proceed:",
+      "checklist_format": true
+    },
+    "step_4_translate": {
+      "title": "4. Converting to Technical Plan",
+      "format": "summary",
+      "description": "Here's what the development team will build:"
+    }
+  },
+  "development_workflow": {
+    "component_creation": {
+      "title": "Creating UI Component",
+      "steps": [
+        "1. What should this component do?",
+        "2. Will it accept any user input?",
+        "3. What data should it display?"
+      ]
+    },
+    "api_creation": {
+      "title": "Creating API Endpoint",
+      "steps": [
+        "1. What data will this API work with?",
+        "2. Should it get data, create, update, or delete?",
+        "3. Who can access this endpoint?"
+      ]
+    },
+    "database_change": {
+      "title": "Database Changes",
+      "steps": [
+        "1. What new information needs to be stored?",
+        "2. What fields should it have?",
+        "3. How should it connect to existing data?"
+      ]
+    }
+  },
+  "error_messages": {
+    "incomplete_request": "I need a bit more information to create a clear plan. Let me ask you a few questions:",
+    "ambiguous_requirement": "This sounds good, but let me make sure we're on the same page:",
+    "success_message": "Perfect! I have everything I need. Let me create the specification:"
+  },
+  "feature_handoff": {
+    "title": "Ready to Build",
+    "message": "Your requirements are clear and documented. The development team is ready to build this feature. Should I proceed?"
+  }
+}

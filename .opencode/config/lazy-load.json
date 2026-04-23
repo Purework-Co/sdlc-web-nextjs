@@ -1,0 +1,52 @@
+{
+  "optimization_target": "Free models (Minimax M2.5, Claude 3.5 Haiku, etc)",
+  "optimization_note": "This configuration reduces token overhead by ~48K tokens per session by lazy-loading non-essential features.",
+  "mcp_servers": {
+    "clickup": {
+      "enabled": false,
+      "lazy_load": true,
+      "trigger_commands": ["create-feature"],
+      "trigger_keywords": ["clickup", "push to task", "add to board"],
+      "description": "Loads only when user explicitly requests to push to ClickUp"
+    },
+    "playwright": {
+      "enabled": false,
+      "lazy_load": true,
+      "trigger_commands": ["test"],
+      "trigger_keywords": ["test", "browser test", "e2e", "automated test"],
+      "description": "Loads only when user requests testing"
+    }
+  },
+  "skills": {
+    "testing": {
+      "load_on_demand": true,
+      "trigger_commands": ["test"],
+      "trigger_keywords": ["test", "unit test", "integration"],
+      "description": "Loads when /test command is used"
+    },
+    "rbac": {
+      "load_on_demand": true,
+      "trigger_keywords": ["role", "permission", "access control", "rbac"],
+      "description": "Loads when feature mentions roles or permissions"
+    },
+    "devops": {
+      "load_on_demand": true,
+      "trigger_commands": ["docker-compose", "podman-setup"],
+      "trigger_keywords": ["deploy", "container", "docker", "podman"],
+      "description": "Loads on deployment requests"
+    }
+  },
+  "documentation": {
+    "core_documents": [
+      "01-sdlc-guidance.md",
+      "03-feature-request.md",
+      "06-api-guidance.md"
+    ],
+    "lazy_loaded": {
+      "testing": "archived/04-testing-guidance.md",
+      "rbac": "archived/12-rbac-standardization.md",
+      "prisma": "archived/09-prisma-migration-standardization.md",
+      "devops": "archived/devops-guide.md"
+    }
+  }
+}
